@@ -1,0 +1,34 @@
+---
+import TimelineItem from "./TimelineItem.astro"
+
+const TIMELINE = [{
+    date: 'Actualmente...',
+    title: 'Máster en Ingeniería del Software - Cloud, Datos y Gestión TI',
+    description: 'En la escuela de Postgrado de la Universidad de Sevilla, con una duración de 1 año académico. Centrado en la rama de Datos.',
+  },{
+    date: 'Actualmente...',
+    title: 'C1 de Inglés',
+    description: 'En la escuela Go English School en Alcalá de Guadaíra.',
+  },
+  {
+    date: 'Julio 2024',
+    title: 'Grado en Ingeniería Informática Software',
+    description: 'Grado obtenido en la promoción 2020-2024 en la Escuela Técnica Superior de Ingeniería Informática de la Universidad de Sevilla.',
+  },
+  {
+    date: 'Mayo 2019',
+    title: 'B2 de Inglés',
+    description: 'Trinity College London: ISE II Integrated Skills in English CEFR Nivel B2.'
+}]
+        
+---
+<ol class="relative mt-16">                  
+   {
+   TIMELINE.map((item) => (
+    <li class="">
+        <TimelineItem {...item} />
+    </li>
+   ))
+   }
+</ol>
+

@@ -1,11 +1,80 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import ProjectCard from '../components/ProjectCard.astro';
+import Badge from '../components/Badge.astro';
+import LinkedIn from '../components/icons/LinkedIn.astro';
+import GitHub from '../components/icons/GitHub.astro';
+import School from '../components/icons/School.astro';
+import SocialPill from '../components/SocialPill.astro';
+import Mail from '../components/icons/Mail.astro';
+import Code from '../components/icons/Code.astro';
+import About from '../components/icons/About.astro'
+import Timeline from '../components/Timeline.astro';
+import SectionContainer from '../components/SectionContainer.astro';
+import AboutMe from '../components/AboutMe.astro';
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<Layout title="Portfolio de Aitor Rodríguez Dueñas - Programador e Ingeniero Junior de Software y Datos" 
+	description="Estudiante de Máster de Datos, Cloud y Gestión TI. Conocimientos en Python, Java, Gitflow, PMBOK y Nivel de Avanzado en Inglés">
+  <!-- Sección Sobre mí -->
+    <main class="px-4">
+		<SectionContainer class="py-44 pb-24">
+				<img 
+				class="rounded-full size-12 mb-4 scale-150" 
+				src="src/assets/foto1.webp" 
+				alt="my_profile" />
+			<h1 class="text-white text-3xl font-bold flex flex-row gap-x-4 pb-6 lg:pb-10">
+				¡Hola, soy Aitor!<a href="https://www.linkedin.com/in/aitor-rodriguez-dueñas" 
+				target="" 
+				rel="noopener"
+				class="flex justify-center items-center">
+			<Badge>En busca de trabajo</Badge></a>
+			</h1>
+			<h2 class="text-2xl text-wrap max-w-[800px]">
+				Soy <span class="opacity-80 text-yellow-300">Aitor Rodríguez Dueñas</span>, recién graduado en Ingeniería Informática Software en la
+				 promoción 2020/2024 en Sevilla. Me considero una <span class="opacity-80 text-yellow-300">persona simpática, proactiva y cooperativa.</span> 
+				 Dentro del ámbito de la informática mis preferencias son la <span class="opacity-80 text-yellow-300">Ingeniería de Datos</span>.
+			</h2>
+			<ul>
+				<nav class="flex gap-x-4 mt-8 flex-wrap">
+					<SocialPill href="mailto:aitor2002rd@gmail.com">
+						<Mail class="size-7"/>
+						Contáctame
+					</SocialPill>
+					<SocialPill href="https://github.com/AitorRD">
+						<GitHub class="size-6"/>
+						GitHub
+					</SocialPill>
+					<SocialPill href="https://www.linkedin.com/in/aitor-rodriguez-dueñas">
+						<LinkedIn class="size-6"/>
+						LinkedIn
+					</SocialPill>
+				</nav>
+			</ul>
+		</SectionContainer>
+
+		<!-- Sección de Formacion 	-->
+		<SectionContainer id="formacion">
+			<h2 class="text-3xl font-semibold mb-4 flex gap-x-4 items-center">
+				<School/>
+				Mi Formación </h2>
+					<Timeline>
+		</SectionContainer>
+
+		<!-- Sección de Proyectos	-->
+		<SectionContainer id="proyectos" >
+			<h2 class="text-3xl font-semibold mt-10 mb-4 flex gap-x-4 items-center">
+			    <Code/>
+				Mis Proyectos</h2>
+					<ProjectCard/>
+		</SectionContainer>
+
+		<!-- Sección de Sobre mí	-->
+		<SectionContainer id="sobre-mi" >
+			<h2 class="text-3xl font-bold mt-10 mb-5 flex gap-x-4 items-center">
+				<About/>
+				Sobre Mí</h2>
+					<AboutMe/>	
+		</SectionContainer>
+	</main>
+  </Layout>

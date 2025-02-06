@@ -1,0 +1,151 @@
+---
+import Express from "./icons/Express.astro";
+import React from "./icons/React.astro";
+import Gitflow from "./icons/Gitflow.astro";
+import Docker from "./icons/Docker.astro";
+import Kubernetes from "./icons/Kubernetes.astro";
+import Mongo from "./icons/Mongo.astro";
+import Vite from "./icons/Vite.astro";
+import GitHub from "./icons/GitHub.astro";
+import SocialPill from "./SocialPill.astro";
+import Python from "./icons/Python.astro";
+import Vue from "./icons/Vue.astro";
+import Latex from "./icons/Latex.astro";
+import Hastro from "./icons/Hastro.astro";
+import Django from "./icons/Django.astro";
+
+
+const TAGS = {
+  EXPRESS: {
+    name: "Express.js",
+    class: "bg-black text-white",
+    icon: Express,
+  },
+  REACT: {
+    name: "React",
+    class: "bg-[#003159] text-white",
+    icon: React,
+  },
+  GITFLOW: {
+    name: "Gitflow",
+    class: "bg-[#f59656] text-white",
+    icon: Gitflow,
+  },
+  DOCKER: {
+    name: "Docker",
+    class: "bg-[#6fcce8] text-white",
+    icon: Docker,
+  },
+  KUBERNETES: {
+    name: "Kubernetes",
+    class: "bg-[#326CE5] text-white",
+    icon: Kubernetes,
+  },
+  MONGO: {
+    name: "MongoDB",
+    class: "bg-[#47A248] text-white",
+    icon: Mongo,
+  },
+  VITE: {
+    name: "Vite",
+    class: "bg-[#646CFF] text-white",
+    icon: Vite,
+  },
+  PYTHON: {
+    name: "Python",
+    class: "bg-[#306998] text-white",
+    icon: Python,
+  },
+  VUE: {
+    name: "Vue",
+    class: "bg-[#41B883] text-white",
+    icon: Vue,
+  },
+  LATEX: {
+    name: "Latex",
+    class: "bg-[#47A248] text-white",
+    icon: Latex,
+  },
+  HASTRO:{
+    name: "Hastro",
+    class: "bg-[#0f62fe] text-white",
+    icon: Hastro,
+  },
+  DJANGO:{
+    name: "Django",
+    class: "bg-black text-white",
+    icon: Django,
+
+  }
+};
+
+const PROJECTS = [
+{
+   title: "CloudMedix", 
+   description: "CloudMedix es una aplicación web en la nube basada en microservicios diseñada para optimizar la gestión de clínicas y centros sanitarios. Ofrece una solución escalable y segura para la administración de citas médicas, personal sanitario, historiales clínicos y notificaciones automáticas",
+   github: "https://github.com/FIS2425", 
+   image: "src/assets/cloudmedix.webp",
+   tags: [TAGS.EXPRESS, TAGS.REACT, TAGS.GITFLOW, TAGS.DOCKER, TAGS.KUBERNETES, TAGS.MONGO],
+  }, {
+    title: "Predicción de Erupciones Volcánicas con IA - TFG",
+    description: "Proyecto de fin de grado en el que se ha desarrollado un modelo de predicción de erupciones volcánicas a partir de datasets de sensores de señales volcánicas. Se han utilizando técnicas de Machine Learning y desarrollo de una web ilustrativa de los resultados.",
+    github: "https://github.com/AitorRD/TFG-Vulcan-Prediction",
+    image: "src/assets/tfg.webp",
+    tags: [TAGS.PYTHON, TAGS.VUE, TAGS.LATEX],
+  }, {
+    title: "Ocial",
+    description: "Ocial es una app web social para compartir eventos y actividades en tu ciudad. Crea eventos y darlos a conocer.",
+    github: "https://github.com/ispp-2324-ocial",
+    image: "src/assets/ocial.webp",
+    tags: [TAGS.VUE, TAGS.DJANGO, TAGS.HASTRO, TAGS.GITFLOW],
+  }
+]
+---
+<div class="flex flex-col gap-y-16">
+{
+  PROJECTS.map(({image, title, description, tags, github}) => (
+    <article class="flex flex-col space-x-0 space-y-8 group md:flex-row md:space-x-8 md:space-y-0">
+      <div class="w-full md:w-1/2"> 
+        <div class="relative flex flex-col items-center 
+        col-span-6 row-span-5 gap-8 transition duration-500 
+        ease-in-out transform shadow-xl overflow-clip rounded-xl 
+        sm:rounded-xl md:group-hover:-translate-y-1 
+        md:group-hover:shadow-2xl lg:border lg:border-gray-800 
+        lg:hover:border-gray-700 lg:hover:bg-gray-800/50">
+          <img 
+          class="object-cover object-top w-full h-56 transition duration-500 sm:h-full md:scale-110 md:group-hover:scale-105"
+          loading="lazy"
+          src={image} 
+          alt={`Captura de pantalla del proyecto ${title}`} />
+        </div>
+      </div>
+
+      <div class="w-full md:w-1/2 md:max-w-lg">
+        <h3 class="text-2xl font-semibold text-yellow-300 mb-2">
+          {title}
+        </h3>
+        <ul class="flex flex-wrap gap-4">
+          {tags.map((tag) => (
+            <li>
+              <span class={`flex items-center gap-2 px-2 py-1 rounded-full text-xs ${tag.class}`}>
+                <tag.icon class="size-5"/>
+                {tag.name}
+              </span>
+            </li>
+          ))}
+        </ul>
+        <p class="text-lg mb-4 text-pretty">
+          {description}
+        </p>
+        <nav class="flex gap-x-4 mt-8 flex-wrap">
+        <SocialPill href={github}>
+						<GitHub class="size-6"/>
+						GitHub
+				</SocialPill>
+        </nav>
+      </div>
+    </article>
+      )
+  )
+}
+</div>

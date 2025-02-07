@@ -6,13 +6,13 @@ import Docker from "./icons/Docker.astro";
 import Kubernetes from "./icons/Kubernetes.astro";
 import Mongo from "./icons/Mongo.astro";
 import Vite from "./icons/Vite.astro";
-import GitHub from "./icons/GitHub.astro";
 import SocialPill from "./SocialPill.astro";
 import Python from "./icons/Python.astro";
 import Vue from "./icons/Vue.astro";
 import Latex from "./icons/Latex.astro";
 import Hastro from "./icons/Hastro.astro";
 import Django from "./icons/Django.astro";
+import Link from "./icons/Link.astro"
 
 
 const TAGS = {
@@ -83,19 +83,19 @@ const PROJECTS = [
 {
    title: "CloudMedix", 
    description: "CloudMedix es una aplicación web en la nube basada en microservicios diseñada para optimizar la gestión de clínicas y centros sanitarios. Ofrece una solución escalable y segura para la administración de citas médicas, personal sanitario, historiales clínicos y notificaciones automáticas",
-   github: "https://github.com/FIS2425", 
+   link: "https://github.com/FIS2425", 
    image: "/cloudmedix.webp",
    tags: [TAGS.EXPRESS, TAGS.REACT, TAGS.GITFLOW, TAGS.DOCKER, TAGS.KUBERNETES, TAGS.MONGO],
   }, {
     title: "Predicción de Erupciones Volcánicas con IA - TFG",
     description: "Proyecto de fin de grado en el que se ha desarrollado un modelo de predicción de erupciones volcánicas a partir de datasets de sensores de señales volcánicas. Se han utilizando técnicas de Machine Learning y desarrollo de una web ilustrativa de los resultados.",
-    github: "https://github.com/AitorRD/TFG-Vulcan-Prediction",
+    link: "https://github.com/AitorRD/TFG-Vulcan-Prediction",
     image: "/tfg.webp",
     tags: [TAGS.PYTHON, TAGS.VUE, TAGS.LATEX],
   }, {
     title: "Ocial",
     description: "Ocial es una app web social para compartir eventos y actividades en tu ciudad. Crea eventos y darlos a conocer.",
-    github: "https://github.com/ispp-2324-ocial",
+    link: "https://github.com/ispp-2324-ocial",
     image: "/ocial.webp",
     tags: [TAGS.VUE, TAGS.DJANGO, TAGS.HASTRO, TAGS.GITFLOW],
   }
@@ -103,7 +103,7 @@ const PROJECTS = [
 ---
 <div class="flex flex-col gap-y-16">
 {
-  PROJECTS.map(({image, title, description, tags, github}) => (
+  PROJECTS.map(({image, title, description, tags, link}) => (
     <article class="flex flex-col space-x-0 space-y-8 group md:flex-row md:space-x-8 md:space-y-0">
       <div class="w-full md:w-1/2"> 
         <div class="relative flex flex-col items-center 
@@ -121,10 +121,15 @@ const PROJECTS = [
       </div>
 
       <div class="w-full md:w-1/2 md:max-w-lg">
-        <h3 class="text-2xl font-semibold text-[#af721c] mb-2">
-          {title}
-        </h3>
-        <ul class="flex flex-wrap gap-4">
+        <nav class="relative inline-flex gap-x-4 mt-4 flex-wrap">
+          <h3 class="text-2xl font-semibold text-[#af721c] mb-2">
+            {title}
+          </h3>
+          <SocialPill href={link}>
+              <Link class="size-5"/>
+          </SocialPill>
+        </nav> 
+        <ul class="flex flex-wrap mt-2 gap-4">
           {tags.map((tag) => (
             <li>
               <span class={`flex items-center gap-2 px-2 py-1 rounded-full text-xs ${tag.class}`}>
@@ -134,15 +139,9 @@ const PROJECTS = [
             </li>
           ))}
         </ul>
-        <p class="text-lg mb-4 text-pretty">
+        <p class="text-lg mt-4 mb-4 text-pretty">
           {description}
         </p>
-        <nav class="flex gap-x-4 mt-8 flex-wrap">
-        <SocialPill href={github}>
-						<GitHub class="size-6"/>
-						GitHub
-				</SocialPill>
-        </nav>
       </div>
     </article>
       )

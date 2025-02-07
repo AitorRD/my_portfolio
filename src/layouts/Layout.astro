@@ -11,7 +11,7 @@ const { description, title } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="es" class="dark">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
@@ -43,14 +43,15 @@ const { description, title } = Astro.props;
 
       .theme-bg {
         min-height: 100vh;
-        background: linear-gradient(to bottom, #a8e4f3, #50a9cd); 
-        color: #000; 
-      }
-
-      .dark .theme-bg {
         background: linear-gradient(to bottom, #19193c, #300404); 
         color: #ddd; 
       }
+/* 
+      .dark .theme-bg {
+        background: linear-gradient(to bottom, #19193c, #300404); 
+        background: linear-gradient(to bottom, #bfc2c7, #51668a);
+        color: #ddd; 
+      }*/
 
       @media (prefers-reduce-motion: reduce) {
         html {
@@ -58,14 +59,5 @@ const { description, title } = Astro.props;
         }
       }
     </style>
-
-    <script is:inline>
-      const applyTheme = () => {
-        const theme = localStorage.getItem("theme") ?? "light";
-        document.documentElement.classList.toggle("dark", theme === "dark");
-      };
-
-      applyTheme();
-    </script>
   </body>
 </html>
